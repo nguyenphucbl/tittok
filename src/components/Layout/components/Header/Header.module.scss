@@ -93,11 +93,30 @@
 .custom-login {
   color: rgb(34, 214, 61);
 }
-
+//NOTE: actions
+.actions {
+  display: flex;
+  align-self: center;
+}
+.action-btn {
+  background-color: transparent;
+  font-size: 2.2rem;
+  color: var(--black);
+  padding: 4px 10px;
+  cursor: pointer;
+}
 .more-btn {
   font-size: 1.8rem;
   margin-left: 20px;
   background-color: transparent;
   padding: 4px 8px;
+  cursor: pointer;
+}
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 12px;
   cursor: pointer;
 }
