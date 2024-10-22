@@ -25,6 +25,9 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
+import UploadIcon from '@/components/Icons/UploadIcon'
+import Message from '@/components/Icons/Message'
+import { Image } from '@/components/Image'
 const cx = classNames.bind(styles)
 export default function Header() {
   const MENU_ITEMS = [
@@ -110,7 +113,14 @@ export default function Header() {
             <>
               <Tippy delay={[0, 200]} content='Upload video' placement='bottom'>
                 <button className={cx('action-btn')}>
-                  <FontAwesomeIcon icon={faUpload} />
+                  {/* <FontAwesomeIcon icon={faUpload} /> */}
+                  <UploadIcon className={cx('upload-icon')} />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 200]} content='Messages' placement='bottom'>
+                <button className={cx('action-btn', 'message-btn')}>
+                  <Message className={cx('message-icon')} />
+                  <span className={cx('badge-message')}>50</span>
                 </button>
               </Tippy>
             </>
@@ -124,12 +134,13 @@ export default function Header() {
           )}
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img
+              <Image
                 className={cx('user-avatar')}
                 src='
                   https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/d62603d4b5041045d6cffbe872d66915.jpeg?lk3s=a5d48078&nonce=21496&refresh_token=5ecac97bccfc719ebf5da4e5b9896b56&x-expires=1729684800&x-signature=b7ScosbQsc3K8Tn3cLs3D3oZxXk%3D&shp=a5d48078&shcp=81f88b70
                   '
                 alt='nguyenvana'
+                fallback='https://yt3.ggpht.com/yti/ANjgQV9T3srm3emLwi3DYZV5dayvgG9lw5KIPVZqj7jwDVE=s88-c-k-c0x00ffffff-no-rj'
               />
             ) : (
               <>
