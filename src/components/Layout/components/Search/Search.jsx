@@ -6,20 +6,22 @@ import HeadlessTippy from '@tippyjs/react/headless'
 import classNames from 'classnames/bind'
 import { useEffect, useRef, useState } from 'react'
 import styles from './Search.module.scss'
+import { useDebounce } from '@/hooks'
 const cx = classNames.bind(styles)
 export default function Search() {
   //TODO - Handle Logic
   const [searchValue, setSearchValue] = useState('')
   const [showResults, setShowResults] = useState(true)
   const [loading, setLoading] = useState(false)
+  const debounced = useDebounce(searchValue, 400)
   const [searchResults, setSearchResults] = useState([])
   const inputSearch = useRef(null)
   useEffect(() => {
-    if (!searchValue.trim()) return setSearchResults([])
+    if (!debounced.trim()) return setSearchResults([])
     setLoading(true)
     fetch(
       `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        searchValue,
+        debounced,
       )}&type=less`,
     )
       .then(res => res.json())
@@ -31,7 +33,10 @@ export default function Search() {
         console.error(err)
         setLoading(false)
       })
-  }, [searchValue])
+  }, [debounced])
+  const handleSearchChange = ({ target: { value } }) => {
+    setSearchValue(value)
+  }
   const handleClearValue = () => {
     setSearchValue('')
     inputSearch.current.focus()
@@ -65,7 +70,7 @@ export default function Search() {
             placeholder='Search accounts and videos'
             spellCheck='false'
             value={searchValue}
-            onChange={e => setSearchValue(e.target.value)}
+            onChange={handleSearchChange}
             onFocus={() => setShowResults(true)}
             ref={inputSearch}
           />
