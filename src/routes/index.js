@@ -1,5 +1,5 @@
 import { HeaderOnly } from '@/components/Layout'
-import { Following, Home, Search, Upload } from '@/pages'
+import { Following, Home, Search, Upload, Profile, NotFound } from '@/pages'
 
 const publicRoutes = [
   {
@@ -15,10 +15,19 @@ const publicRoutes = [
     component: Upload,
     layout: HeaderOnly,
   },
+
   {
     path: '/search',
     component: Search,
     layout: null,
+  },
+  {
+    path: '/profile/:nickname',
+    component: Profile,
+  },
+  {
+    path: '*',
+    component: NotFound,
   },
 ]
 
