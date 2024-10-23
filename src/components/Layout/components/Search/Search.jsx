@@ -1,12 +1,14 @@
 import { AccountItems } from '@/components/AccountItems'
 import { Wrapper as PopperWrapper } from '@/components/Popper'
+import { useDebounce } from '@/hooks'
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import HeadlessTippy from '@tippyjs/react/headless'
 import classNames from 'classnames/bind'
 import { useEffect, useRef, useState } from 'react'
 import styles from './Search.module.scss'
-import { useDebounce } from '@/hooks'
+import { handleSearch } from '@/apiServices/searchService'
+
 const cx = classNames.bind(styles)
 export default function Search() {
   //TODO - Handle Logic
@@ -19,20 +21,12 @@ export default function Search() {
   useEffect(() => {
     if (!debounced.trim()) return setSearchResults([])
     setLoading(true)
-    fetch(
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        debounced,
-      )}&type=less`,
-    )
-      .then(res => res.json())
-      .then(res => {
-        setSearchResults(res.data)
-        setLoading(false)
-      })
-      .catch(err => {
-        console.error(err)
-        setLoading(false)
-      })
+    const fetchData = async () => {
+      const data = await handleSearch(debounced)
+      setSearchResults(data)
+      setLoading(false)
+    }
+    fetchData()
   }, [debounced])
   const handleSearchChange = ({ target: { value } }) => {
     setSearchValue(value)
