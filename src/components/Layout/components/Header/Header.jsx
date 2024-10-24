@@ -4,6 +4,7 @@ import Message from '@/components/Icons/Message'
 import UploadIcon from '@/components/Icons/UploadIcon'
 import { Image } from '@/components/Image'
 import { Menu } from '@/components/Popper'
+import routesConfig from '@/config/routes'
 import {
   faCoins,
   faEarthAmericas,
@@ -19,6 +20,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Tippy from '@tippyjs/react'
 import classNames from 'classnames/bind'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import 'tippy.js/dist/tippy.css'
 import { Search } from '../Search'
 import styles from './Header.module.scss'
@@ -68,7 +70,9 @@ export default function Header() {
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
         <div className={cx('logo')}>
-          <img src={images.logo} alt='' />
+          <Link to={routesConfig.home} className={cx('logo-link')}>
+            <img src={images.logo} alt='' />
+          </Link>
         </div>
 
         <Search />

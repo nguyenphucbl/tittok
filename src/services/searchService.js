@@ -1,4 +1,4 @@
-import * as Request from '@/ultils/request'
+import * as Request from '@/utils/request'
 
 const handleSearch = async (q, type = 'less') => {
   try {

@@ -1,32 +1,32 @@
 import { HeaderOnly } from '@/components/Layout'
 import { Following, Home, Search, Upload, Profile, NotFound } from '@/pages'
-
+import routesConfig from '@/config/routes'
 const publicRoutes = [
   {
-    path: '/',
+    path: routesConfig.home,
     component: Home,
   },
   {
-    path: '/following',
+    path: routesConfig.following,
     component: Following,
   },
   {
-    path: '/upload',
+    path: routesConfig.upload,
     component: Upload,
     layout: HeaderOnly,
   },
 
   {
-    path: '/search',
+    path: routesConfig.search,
     component: Search,
     layout: null,
   },
   {
-    path: '/profile/:nickname',
+    path: routesConfig.profile,
     component: Profile,
   },
   {
-    path: '*',
+    path: routesConfig.notFound,
     component: NotFound,
   },
 ]

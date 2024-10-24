@@ -12,7 +12,7 @@ Menu.propTypes = {
   items: propTypes.array,
   onChange: propTypes.func.isRequired,
 }
-export default function Menu({ children, items = [], onChange }) {
+export default function Menu({ children, items = [], onChange, hideOnClick = false }) {
   const [history, setHistory] = useState([{ data: items }])
   const current = history[history.length - 1]
   const renderItems = () =>
@@ -56,6 +56,7 @@ export default function Menu({ children, items = [], onChange }) {
         </div>
       )}
       onHide={() => setHistory([{ data: items }])}
+      hideOnClick={hideOnClick}
     >
       {children}
     </Tippy>

@@ -2,11 +2,12 @@
 
 :root {
   --primary-color: #ff3b5c;
-
+  --font-family: 'roboto', sans-serif;
   // Default layout
   --default-layout-header-height: 60px;
   --default-layout-width: 1150px;
   --default-layout-horizontal-space: 24px;
+
   --black: #161823;
   --white: #fff;
 }
@@ -16,7 +17,7 @@
   padding: 0;
 }
 html {
-  font-family: 'roboto', sans-serif;
+  font-family: var(--font-family);
   font-size: 62.5%;
 }
 

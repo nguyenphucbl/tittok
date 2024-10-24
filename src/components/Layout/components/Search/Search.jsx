@@ -7,7 +7,7 @@ import HeadlessTippy from '@tippyjs/react/headless'
 import classNames from 'classnames/bind'
 import { useEffect, useRef, useState } from 'react'
 import styles from './Search.module.scss'
-import { handleSearch } from '@/apiServices/searchService'
+import { handleSearch } from '@/services/searchService'
 
 const cx = classNames.bind(styles)
 export default function Search() {
@@ -29,7 +29,8 @@ export default function Search() {
     fetchData()
   }, [debounced])
   const handleSearchChange = ({ target: { value } }) => {
-    setSearchValue(value)
+    const searchValue = value
+    if (!searchValue.startsWith(' ')) setSearchValue(searchValue)
   }
   const handleClearValue = () => {
     setSearchValue('')
@@ -37,6 +38,9 @@ export default function Search() {
   }
   const handleHideResults = () => {
     setShowResults(false)
+  }
+  const handleSubmit = e => {
+    e.preventDefault()
   }
   return (
     <div>
@@ -78,7 +82,7 @@ export default function Search() {
               </button>
             )
           )}
-          <button className={cx('search-btn')}>
+          <button className={cx('search-btn')} onMouseDown={handleSubmit}>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </div>
