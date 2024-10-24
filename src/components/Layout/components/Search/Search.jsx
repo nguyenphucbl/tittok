@@ -43,6 +43,7 @@ export default function Search() {
     e.preventDefault()
   }
   return (
+    //NOTE Tippy must have wrap parent
     <div>
       <HeadlessTippy
         interactive={true}

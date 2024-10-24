@@ -51,7 +51,7 @@ export default function Menu({ children, items = [], onChange, hideOnClick = fal
               />
             )}
 
-            {renderItems()}
+            <div className={cx('menu-body')}>{renderItems()}</div>
           </PopperWrapper>
         </div>
       )}

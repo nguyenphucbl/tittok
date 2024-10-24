@@ -3,36 +3,46 @@
   --search-height: 46px;
   --search-top-space: 9px;
   --search-button-width: 52px;
-  height: var(--default-layout-header-height);
-  width: 100%;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--default-layout-header-height);
+  background-color: var(--white);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
+
 .inner {
-  height: 100%;
-  width: var(--default-layout-width);
-  padding: 0 var(--default-layout-horizontal-space);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
+  width: var(--default-layout-width);
+  padding: 0 var(--default-layout-horizontal-space);
 }
 
 .logo {
   display: flex;
   align-items: center;
 }
+
 .logo-link {
   display: flex;
 }
+
 .custom-login {
   color: rgb(34, 214, 61);
 }
+
 //NOTE: actions
 .actions {
   display: flex;
   align-items: center;
 }
+
 .action-btn {
   background-color: transparent;
   height: 36px;
@@ -40,6 +50,7 @@
   padding: 4px 10px;
   cursor: pointer;
 }
+
 .more-btn {
   font-size: 1.8rem;
   margin-left: 20px;
@@ -47,6 +58,7 @@
   padding: 4px 8px;
   cursor: pointer;
 }
+
 .user-avatar {
   width: 32px;
   height: 32px;
@@ -60,9 +72,11 @@
 .upload-icon {
   padding: 4px;
 }
+
 .message-btn {
   position: relative;
 }
+
 .badge-message {
   position: absolute;
   top: -4px;
