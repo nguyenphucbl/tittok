@@ -1,8 +1,8 @@
-import * as Request from '@/utils/request'
+import * as httpRequest from '@/utils/httpRequest'
 
 const handleSearch = async (q, type = 'less') => {
   try {
-    const data = await Request.get('users/search', { params: { q, type } })
+    const data = await httpRequest.get('users/search', { params: { q, type } })
     return data
   } catch (err) {
     console.log(err)
