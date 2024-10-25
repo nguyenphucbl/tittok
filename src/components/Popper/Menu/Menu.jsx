@@ -10,11 +10,13 @@ const cx = classNames.bind(styles)
 Menu.propTypes = {
   children: propTypes.node.isRequired,
   items: propTypes.array,
-  onChange: propTypes.func.isRequired,
+  onChange: propTypes.func,
+  hideOnClick: propTypes.bool,
 }
 export default function Menu({ children, items = [], onChange, hideOnClick = false }) {
   const [history, setHistory] = useState([{ data: items }])
   const current = history[history.length - 1]
+  console.log('🚀 ~ Menu ~ current:', current)
   const renderItems = () =>
     current.data.map((item, index) => {
       const isParent = !!item.children
@@ -44,7 +46,7 @@ export default function Menu({ children, items = [], onChange, hideOnClick = fal
           <PopperWrapper className={cx('menu-popper')}>
             {history.length > 1 && (
               <Header
-                title={'Language'}
+                title={current.title}
                 onBack={() => {
                   setHistory(prev => prev.slice(0, -1))
                 }}

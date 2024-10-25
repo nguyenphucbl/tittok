@@ -1,5 +1,9 @@
-import React from 'react'
-
+import PropTypes from 'prop-types'
+Message.propTypes = {
+  className: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string,
+}
 export default function Message({ className, width, height }) {
   return (
     <svg

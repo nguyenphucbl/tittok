@@ -1,8 +1,26 @@
-/* eslint-disable react/prop-types */
 import classNames from 'classnames/bind'
 import { Link } from 'react-router-dom'
 import styles from './Button.module.scss'
+import PropTypes from 'prop-types'
 const cx = classNames.bind(styles)
+Button.propTypes = {
+  to: PropTypes.string,
+  href: PropTypes.string,
+  primary: PropTypes.bool,
+  outline: PropTypes.bool,
+  onClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
+  disabled: PropTypes.bool,
+
+  // small: PropTypes.bool,
+  // large: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  text: PropTypes.bool,
+  rounded: PropTypes.bool,
+  className: PropTypes.string,
+  leftIcon: PropTypes.node,
+  rightIcon: PropTypes.node,
+}
 export default function Button({
   to,
   href,

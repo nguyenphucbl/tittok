@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind'
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import styles from './Menu.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 const cx = classNames.bind(styles)
 Header.propTypes = {
-  children: propTypes.node.isRequired,
-  items: propTypes.array,
+  title: PropTypes.string.isRequired,
+  onBack: PropTypes.func.isRequired,
 }
 export default function Header({ title, onBack }) {
   return (

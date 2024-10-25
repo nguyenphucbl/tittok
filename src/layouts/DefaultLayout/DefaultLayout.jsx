@@ -1,9 +1,8 @@
-import React from 'react'
-import Header from '../components/Header/Header'
-import Sidebar from './Sidebar/Sidebar'
-import PropTypes from 'prop-types'
-import styles from './DefaultLayout.module.scss'
 import classNames from 'classnames/bind'
+import PropTypes from 'prop-types'
+import Header from '../components/Header/Header'
+import styles from './DefaultLayout.module.scss'
+import Sidebar from './Sidebar/Sidebar'
 DefaultLayout.propTypes = {
   children: PropTypes.node.isRequired,
 }

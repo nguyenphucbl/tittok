@@ -5,6 +5,7 @@ import styles from './Menu.module.scss'
 const cx = classNames.bind(styles)
 MenuItems.propTypes = {
   data: propTypes.object.isRequired,
+  onClick: propTypes.func,
 }
 export default function MenuItems({ data, onClick }) {
   const classes = cx('menu-item', { separate: data.separate })
