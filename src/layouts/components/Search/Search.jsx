@@ -8,26 +8,27 @@ import classNames from 'classnames/bind'
 import { useEffect, useRef, useState } from 'react'
 import styles from './Search.module.scss'
 import { handleSearch } from '@/services/searchService'
+import SearchResult from './SearchResult'
 
 const cx = classNames.bind(styles)
 export default function Search() {
   //TODO - Handle Logic
   const [searchValue, setSearchValue] = useState('')
-  const [showResults, setShowResults] = useState(true)
+  const [showResults, setShowResults] = useState(false)
   const [loading, setLoading] = useState(false)
-  const debounced = useDebounce(searchValue, 400)
+  const debouncedValue = useDebounce(searchValue, 400)
   const [searchResults, setSearchResults] = useState([])
   const inputSearch = useRef(null)
   useEffect(() => {
-    if (!debounced.trim()) return setSearchResults([])
+    if (!debouncedValue.trim()) return setSearchResults([])
     setLoading(true)
     const fetchData = async () => {
-      const data = await handleSearch(debounced)
+      const data = await handleSearch(debouncedValue)
       setSearchResults(data)
       setLoading(false)
     }
     fetchData()
-  }, [debounced])
+  }, [debouncedValue])
   const handleSearchChange = ({ target: { value } }) => {
     const searchValue = value
     if (!searchValue.startsWith(' ')) setSearchValue(searchValue)
@@ -53,9 +54,10 @@ export default function Search() {
           <div className={cx('search-results')} {...attrs} tabIndex='-1'>
             <PopperWrapper>
               <h4 className={cx('search-title')}>Accounts</h4>
-              {searchResults.map(result => (
+              {/* {searchResults.map(result => (
                 <AccountItems key={result.id} data={result} />
-              ))}
+              ))} */}
+              <SearchResult searchResults={searchResults} />
             </PopperWrapper>
           </div>
         )}
