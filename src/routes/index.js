@@ -1,4 +1,4 @@
-import { Following, Home, Search, Upload, Profile, NotFound } from '@/pages'
+import { Following, Home, Search, Upload, Profile, NotFound, Live } from '@/pages'
 import config from '@/config'
 import { HeaderOnly } from '@/layouts'
 const publicRoutes = [
@@ -24,6 +24,10 @@ const publicRoutes = [
   {
     path: config.routes.profile,
     component: Profile,
+  },
+  {
+    path: config.routes.live,
+    component: Live,
   },
   {
     path: config.routes.notFound,

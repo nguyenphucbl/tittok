@@ -4,6 +4,7 @@ const routes = {
   upload: '/upload',
   search: '/search',
   profile: '/profile/:nickname',
+  live: '/live',
   notFound: '*',
 }
 
